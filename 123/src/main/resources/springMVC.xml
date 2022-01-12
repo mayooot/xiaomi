@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/p
+        https://www.springframework.org/schema/aop/spring-p.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 1. 扫描所有容器组件-->
+    <context:component-scan base-package="com.may" use-default-filters="false">
+        <!-- 只扫描controller -->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!-- 2. 配置视图解析器 -->
+   <!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>-->
+
+    <!-- 3. 两个标准配置：将springMVC不能处理的请求交给默认处理器处理[tomcat] (开放静态资源访问权限)-->
+    <mvc:default-servlet-handler/>
+
+    <!-- 添加注解支持、映射动态请求、JSR303校验、快捷AJAX等 -->
+    <mvc:annotation-driven/>
+
+ <!--   &lt;!&ndash; 对静态资源的访问 &ndash;&gt;
+    <mvc:resources mapping="static/**" location="static/"/>-->
+
+    <!--配置权限拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+<!--            <mvc:mapping path="/xiaomi/shopcart.jsp"/>-->
+            <mvc:mapping path="/shopCart/**" />
+            <bean class="com.may.xiaomi.interceptor.PrivilegeInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!--解决跨域问题 -->
+    <mvc:cors>
+        <mvc:mapping path="/**"
+                     allowed-origins="*"
+                     allowed-methods="POST, GET, OPTIONS, DELETE, PUT, PATCH"
+                     allowed-headers="Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+                     allow-credentials="true"/>
+    </mvc:cors>
+</beans>

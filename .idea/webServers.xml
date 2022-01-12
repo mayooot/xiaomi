@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="1b04c928-186a-4c49-90f1-2527d3e51179" name="47.98.209.30" url="http://47.98.209.30:8080/xiaomi/index.jsp">
+        <fileTransfer rootFolder="/usr/local/tomcat/apache-tomcat-7.0.57/webapps" accessType="SFTP" host="47.98.209.30" port="22" sshConfigId="5e963cce-bf5a-427d-ae2b-5d79e2c05285" sshConfig="root@47.98.209.30:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

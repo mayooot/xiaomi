@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/xiaomi?serverTimezone=PRC"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.may.xiaomi.entry"
+                            targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.may.xiaomi.dao"
+                             targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <table tableName="consumer" domainObjectName="Consumer"/>
+        <table tableName="goods" domainObjectName="Goods"/>
+        <table tableName="goods_images" domainObjectName="GoodsImages"/>
+        <table tableName="goods_type" domainObjectName="GoodsType"/>
+        <table tableName="goods_service" domainObjectName="GoodsService"/>
+        <table tableName="goods_package" domainObjectName="GoodsPackage"/>
+        <table tableName="goods_configure" domainObjectName="GoodsConfigure"/>
+        <table tableName="goods_cart" domainObjectName="GoodsCart"/>
+        <table tableName="goods_order" domainObjectName="GoodsOrder"/>
+        <table tableName="goods_order_item" domainObjectName="GoodsOrderItem"/>
+        <table tableName="goods_shipping_address" domainObjectName="GoodsShippingAddress"/>
+
+    </context>
+</generatorConfiguration>
